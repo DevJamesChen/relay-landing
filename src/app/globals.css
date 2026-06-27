@@ -1,0 +1,314 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: dark;
+
+  --radius: 0.7rem;
+
+  --brand: oklch(0.82 0.16 162);
+  --brand-foreground: oklch(0.25 0.06 162);
+
+  --background: oklch(0.16 0.006 264);
+  --foreground: oklch(0.95 0.004 264);
+
+  --card: oklch(0.19 0.007 264);
+  --card-foreground: oklch(0.95 0.004 264);
+
+  --popover: oklch(0.18 0.007 264);
+  --popover-foreground: oklch(0.95 0.004 264);
+
+  --primary: oklch(0.82 0.16 162);
+  --primary-foreground: oklch(0.22 0.06 162);
+
+  --secondary: oklch(0.23 0.008 264);
+  --secondary-foreground: oklch(0.95 0.004 264);
+
+  --muted: oklch(0.23 0.008 264);
+  --muted-foreground: oklch(0.64 0.012 264);
+
+  --accent: oklch(0.24 0.008 264);
+  --accent-foreground: oklch(0.95 0.004 264);
+
+  --destructive: oklch(0.62 0.21 25);
+
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.82 0.16 162);
+
+  --chart-1: oklch(0.82 0.16 162);
+  --chart-2: oklch(0.7 0.13 200);
+  --chart-3: oklch(0.62 0.16 264);
+  --chart-4: oklch(0.7 0.15 320);
+  --chart-5: oklch(0.75 0.15 70);
+
+  --sidebar: oklch(0.18 0.007 264);
+  --sidebar-foreground: oklch(0.95 0.004 264);
+  --sidebar-primary: oklch(0.82 0.16 162);
+  --sidebar-primary-foreground: oklch(0.22 0.06 162);
+  --sidebar-accent: oklch(0.24 0.008 264);
+  --sidebar-accent-foreground: oklch(0.95 0.004 264);
+  --sidebar-border: oklch(1 0 0 / 9%);
+  --sidebar-ring: oklch(0.82 0.16 162);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      #000 40%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      #000 40%,
+      transparent 100%
+    );
+  }
+
+  .brand-glow {
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--brand) 20%, transparent),
+      0 0 60px -12px color-mix(in oklch, var(--brand) 45%, transparent);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      180deg,
+      var(--foreground) 30%,
+      color-mix(in oklch, var(--foreground) 55%, transparent)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Scroll-reveal: hidden until the .reveal element is marked in view */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Staggered children inside a revealed group */
+  .reveal-children > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.reveal-in.reveal-children > *,
+  .reveal.reveal-in .reveal-children > * {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-children > *:nth-child(1) { transition-delay: 0.04s; }
+  .reveal-children > *:nth-child(2) { transition-delay: 0.11s; }
+  .reveal-children > *:nth-child(3) { transition-delay: 0.18s; }
+  .reveal-children > *:nth-child(4) { transition-delay: 0.25s; }
+  .reveal-children > *:nth-child(5) { transition-delay: 0.32s; }
+  .reveal-children > *:nth-child(6) { transition-delay: 0.39s; }
+  .reveal-children > *:nth-child(7) { transition-delay: 0.46s; }
+  .reveal-children > *:nth-child(8) { transition-delay: 0.53s; }
+  .reveal-children > *:nth-child(9) { transition-delay: 0.6s; }
+  .reveal-children > *:nth-child(10) { transition-delay: 0.67s; }
+
+  /* On-load entrance (above the fold; ends visible without JS) */
+  .animate-rise {
+    animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Card hover lift */
+  .card-lift {
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.3s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .animate-float-slow {
+    animation: float-slow 7s ease-in-out infinite;
+  }
+  .animate-pulse-soft {
+    animation: pulse-soft 2.4s ease-in-out infinite;
+  }
+  .animate-caret {
+    animation: caret-blink 1s step-end infinite;
+  }
+
+  /* Animated underline for nav links */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.35rem;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0.6;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@layer base {
+  /* Keep anchored sections clear of the sticky header */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-rise,
+  .animate-float-slow,
+  .animate-pulse-soft,
+  .animate-caret,
+  .animate-spin {
+    animation: none !important;
+  }
+  .card-lift:hover {
+    transform: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
