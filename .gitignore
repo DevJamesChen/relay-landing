@@ -1,5 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# local agent / editor tooling
+.claude/
+CLAUDE.md
+AGENTS.md
+
 # dependencies
 /node_modules
 /.pnp
